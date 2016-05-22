@@ -1,2 +1,30 @@
 {% extends 'bootstrap/base.html' %}
 {% block title %} {{ APP['NAME'] + ' ' + APP['VERSION'] }}{% endblock %}
+
+ {% block content %}
+
+    {% include "stats.html" %}
+
+    {% include "containerlist.html" %}
+
+
+ {% endblock content %}
+
+{% block script %}
+  {{ super() }}
+<!-- page script -->
+<script>
+  $(function () {
+    $("#example1").DataTable();
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false
+    });
+  });
+</script>
+
+{% endblock script %}

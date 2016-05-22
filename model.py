@@ -6,9 +6,12 @@ class DockerInfo(object):
     def __init__(self):
         client = Client(base_url=CONSTANTS['CONNECTION_URL'])
         self.images = client.images()
-        self.containers = client.containers()
+        self.containers = client.containers(all=True, size=True)
         self.volumes = client.volumes()
         self.networks = client.networks()
+        self.version = client.version()
+        self.info = client.info()
+        #self.datetime =
         pass
 
     def getImages(self):
@@ -21,7 +24,13 @@ class DockerInfo(object):
         return self.containers
 
     def getContainerCount(self):
-        return len(self.containers)
+       return (self.info['Containers'])
+
+    #def getRunningContainers(self):
+    #    return self.containers
+
+    def getRunningContainerCount(self):
+        return (self.info['ContainersRunning'])
 
     def getVolumes(self):
         return self.volumes
@@ -38,11 +47,13 @@ class DockerInfo(object):
 if __name__ == "__main__":
     cli = Client(base_url='unix://var/run/docker.sock')
     #print(len(cli.images()))
-    #print(len(cli.containers()))
+    print(cli.containers(all=True))
     dc = DockerInfo()
     print(len(dc.getImages()))
     print(dc.getImageCount())
     print(dc.getContainerCount())
+    print(cli.info())
+    print(cli.version())
 
 
 
