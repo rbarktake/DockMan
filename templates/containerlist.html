@@ -20,18 +20,32 @@
                 <tr>
                   <th>ID</th>
                   <th>Image</th>
-                  <th>Name</th>
+                  <th>Names</th>
                   <th>Created</th>
                   <th>Status</th>
                 </tr>
-
+                {% for container in dock.getContainers() %}
                 <tr>
-                  <td>183</td>
-                  <td>John Doe</td>
-                  <td>11-7-2014</td>
-                  <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                  <td><span class="label label-success">Approved</span></td>
+                  <td>{{ container['Id'] }}</td>
+                  <td>{{ container['Image'] }}</td>
+                  <td>{{ ", ".join(container['Names']) }}</td>
+                  <td>{{ container['Created'] }}</td>
+                  <td><span class="label
+                  {% if container['Status'].startswith('Up') %}
+                     label-success
+                  {% elif container['Status'].startswith('Restarting') %}
+                     label-primary
+                  {% elif container['Status'].startswith('Paused') %}
+                     label-warning
+                  {% elif container['Status'].startswith('Exited') %}
+                     label-danger
+                  {% else %}
+                     label-danger
+                  {% endif %}
+                  ">{{ container['Status'] }}</span></td>
                 </tr>
+                {% endfor %}
+                {#
                 <tr>
                   <td>219</td>
                   <td>Alexander Pierce</td>
@@ -53,6 +67,7 @@
                   <td><span class="label label-danger">Denied</span></td>
                   <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
                 </tr>
+                #}
               </table>
             </div>
             <!-- /.box-body -->
