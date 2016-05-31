@@ -1,0 +1,83 @@
+[
+    {
+        "Containers": {},
+        "Driver": "null",
+        "EnableIPv6": false,
+        "IPAM": {
+            "Config": [],
+            "Driver": "default",
+            "Options": null
+        },
+        "Id": "5076e9a17f7ba58fde4af5377c738efcdf54e757a6ce75c5478c68d263aa97ee",
+        "Internal": false,
+        "Labels": {},
+        "Name": "none",
+        "Options": {},
+        "Scope": "local"
+    },
+    {
+        "Containers": {},
+        "Driver": "host",
+        "EnableIPv6": false,
+        "IPAM": {
+            "Config": [],
+            "Driver": "default",
+            "Options": null
+        },
+        "Id": "74f2d43aff3852d9aa23c08eef287c5d6ba95bc3ee9bff150aa797013a8a1e9d",
+        "Internal": false,
+        "Labels": {},
+        "Name": "host",
+        "Options": {},
+        "Scope": "local"
+    },
+    {
+        "Containers": {
+            "5c96841fb0c50332536ebacf5fa7ca63fa426708746e944121fbbe4de0937053": {
+                "EndpointID": "d31252668d97189d68bc308265e793ddb5194f29d0e2ba785c1095cfe3a00c9d",
+                "IPv4Address": "172.17.0.3/16",
+                "IPv6Address": "",
+                "MacAddress": "02:42:ac:11:00:03",
+                "Name": "dockerelk_kibana_1"
+            },
+            "988d84eb999f176d1796c0e88a263313a06f972a244eb133ced05879e9239364": {
+                "EndpointID": "794b56bf07a37b91a9f164b62d0a92e2efcf45783623d048f4facf011ea7e484",
+                "IPv4Address": "172.17.0.4/16",
+                "IPv6Address": "",
+                "MacAddress": "02:42:ac:11:00:04",
+                "Name": "dockerelk_logstash_1"
+            },
+            "b858ed1f2cdb01629d05abb8a7d24d3582c4373a98647e35705f37fe27440040": {
+                "EndpointID": "b6a0d79dce57c7b3fd121458e6287f585912a3111956102cd86783549df124ab",
+                "IPv4Address": "172.17.0.2/16",
+                "IPv6Address": "",
+                "MacAddress": "02:42:ac:11:00:02",
+                "Name": "dockerelk_elasticsearch_1"
+            }
+        },
+        "Driver": "bridge",
+        "EnableIPv6": false,
+        "IPAM": {
+            "Config": [
+                {
+                    "Subnet": "172.17.0.0/16"
+                }
+            ],
+            "Driver": "default",
+            "Options": null
+        },
+        "Id": "0485b7673769589ccd5687c484c7daed6714c7323f00f19e76be166f606d6722",
+        "Internal": false,
+        "Labels": {},
+        "Name": "bridge",
+        "Options": {
+            "com.docker.network.bridge.default_bridge": "true",
+            "com.docker.network.bridge.enable_icc": "true",
+            "com.docker.network.bridge.enable_ip_masquerade": "true",
+            "com.docker.network.bridge.host_binding_ipv4": "0.0.0.0",
+            "com.docker.network.bridge.name": "docker0",
+            "com.docker.network.driver.mtu": "1500"
+        },
+        "Scope": "local"
+    }
+]

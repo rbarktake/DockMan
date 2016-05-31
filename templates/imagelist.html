@@ -2,7 +2,7 @@
         <div class="col-xs-12">
           <div class="box">
             <div class="box-header">
-              <h3 class="box-title">Containers</h3>
+              <h3 class="box-title">Images</h3>
 
               <div class="box-tools">
                 <div class="input-group input-group-sm" style="width: 150px;">
@@ -19,33 +19,22 @@
               <table class="table table-hover">
                 <tr>
                   <th>ID</th>
-                  <th>Image</th>
-                  <th>Names</th>
+                 
+                  <th>RepoTags</th>
                   <th>Created</th>
-                  <th>Status</th>
+                  <th>Size</th>
+                  <th>VirtualSize</th>
                 </tr>
-                {% for container in dock.getContainers() %}
+                {% for image in dock.getImages() %}
                 <tr>
-                  <td>{{ container['Id'] }}</td>
-                  <td>{{ container['Image'] }}</td>
-                  <td>{{ ", ".join(container['Names']) }}</td>
-                  <td>{{ container['Created'] | strftime }}</td>
-                  <td><span class="label
-                  {% if container['Status'].startswith('Up') %}
-                     label-success
-                  {% elif container['Status'].startswith('Restarting') %}
-                     label-primary
-                  {% elif container['Status'].startswith('Paused') %}
-                     label-warning
-                  {% elif container['Status'].startswith('Exited') %}
-                     label-danger
-                  {% else %}
-                     label-danger
-                  {% endif %}
-                  ">{{ container['Status'] }}</span></td>
+                  <td>{{ image['Id'] }}</td>
+                 
+                  <td>{{ ", ".join(image['RepoTags']) }}</td>
+                  <td>{{ image['Created'] | strftime }}</td>
+                  <td>{{ image['Size'] | filesizeformat }}</td>
+                  <td>{{ image['VirtualSize'] | filesizeformat }}</td>
                 </tr>
                 {% endfor %}
-    
               </table>
             </div>
             <!-- /.box-body -->

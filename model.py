@@ -1,3 +1,5 @@
+import json
+
 from docker import Client
 CONSTANTS = { 'CONNECTION_URL': 'unix://var/run/docker.sock' }
 
@@ -43,17 +45,24 @@ class DockerInfo(object):
 
     def getNetworkCount(self):
         return len(self.networks)
+    
+    def getPretty(self, obj):
+        #return json.dump(obj, sort_keys=True, indent=4, separators=(',', ': '))
+        return json.dumps(obj, sort_keys=True, indent=4, separators=(',', ': '))
 
 if __name__ == "__main__":
     cli = Client(base_url='unix://var/run/docker.sock')
     #print(len(cli.images()))
-    print(cli.containers(all=True))
+    #print(cli.containers(all=True))
     dc = DockerInfo()
-    print(len(dc.getImages()))
-    print(dc.getImageCount())
-    print(dc.getContainerCount())
-    print(cli.info())
-    print(cli.version())
+    #print(len(dc.getImages()))
+    #print(dc.getImages())
+    #print(dc.getVolumes())
+    print(dc.getPretty(dc.getNetworks()))
+    #print(dc.getImageCount())
+    #print(dc.getContainerCount())
+    #print(cli.info())
+    #print(cli.version())
 
 
 

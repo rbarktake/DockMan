@@ -2,7 +2,7 @@
 from flask import Flask, render_template
 import constants as config
 from model import DockerInfo
-
+from util import getDateString
 #  create the application object
 app = Flask(config.APP['NAME'])
 
@@ -39,6 +39,10 @@ def index():
 @include_app_data
 def index():
     return 'index2.html'
+
+@app.template_filter('strftime')
+def _jinja2_filter_datetime(date, fmt=None):
+    return getDateString(date)
 
 
 # start the server with the 'run()' method
