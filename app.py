@@ -37,12 +37,13 @@ def boothame():
 def index():
      return render_template('index.html', APP=config.APP)
 
-'''
+
 
 @app.route('/index2')
 @include_app_data
 def index():
     return 'index2.html'
+'''
 
 @app.template_filter('strftime')
 def _jinja2_filter_datetime(date, fmt=None):

@@ -5,6 +5,7 @@
 <head>
   {%- block head %}
   <meta charset="utf-8">
+  <link rel="shortcut icon" type="image/ico" href="{{ url_for('static', filename='images/favicon.ico') }}">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>{% block title %}{{ title | default }}{% endblock title %}</title>
 
