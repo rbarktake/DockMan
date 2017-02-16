@@ -5,18 +5,8 @@
 
     {% include "stats.html" %}
 
-{% if entity == 'containers' %}
-    {% include "containerlist.html" %}
-{% elif entity == 'images' %}
-    {% include "imagelist.html" %}
-{% elif entity == 'networks' %}
-    {% include "networklist.html" %}
-{% elif entity == 'volumes' %}
-    {% include "volumelist.html" %} 
-{% else %}
     {% include "host.html" %}
-                           
-{% endif %}
+
     
  {% endblock content %}
 

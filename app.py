@@ -5,6 +5,7 @@ from model import DockerInfo
 from util import getDateString
 #  create the application object
 app = Flask(config.APP['NAME'])
+dc = DockerInfo()
 
 def include_app_data(fn):
     template_name = fn()
@@ -16,14 +17,17 @@ def include_app_data(fn):
 # use decorators to link the function to a url
 @app.route('/')
 def home():
-    dc = DockerInfo()
+    return render_template('home.html', APP=config.APP, dock=dc)
+
+@app.route('/index/<entity>/')
+def index(entity):
     return render_template('index.html', APP=config.APP, dock=dc)
 
+@app.route('/<template_name>/')
+def showpage(template_name):
+    #return render_template(template_name, APP=config.APP, dock=dc)  
+    return render_template('index.html', APP=config.APP, dock=dc, entity=template_name)
 '''
-@app.route('/welcome')
-def welcome():
-    return render_template('welcome.html')  # render a template
-
 @app.route('/boothome')
 def boothame():
     return render_template('boothome.html', APP=config.APP)  # render a template
