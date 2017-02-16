@@ -28,8 +28,17 @@ class DockerInfo(object):
     def getContainerCount(self):
        return (self.info['Containers'])
 
-    #def getRunningContainers(self):
-    #    return self.containers
+    def getInfo(self):
+        return json.loads(self.getPretty(self.info))
+
+    def getHostName(self):
+        return (self.info['Name'])
+    
+    def getHostOS(self):
+        return (self.info['OperatingSystem'])
+    
+    def getHostVersion(self):
+        return (self.info['ServerVersion'])
 
     def getRunningContainerCount(self):
         return (self.info['ContainersRunning'])
@@ -58,10 +67,14 @@ if __name__ == "__main__":
     #print(len(dc.getImages()))
     #print(dc.getImages())
     #print(dc.getVolumes())
-    print(dc.getPretty(dc.getNetworks()))
+    #print(dc.getPretty(dc.getNetworks()))
     #print(dc.getImageCount())
     #print(dc.getContainerCount())
     #print(cli.info())
+    print(dc.getPretty(dc.getInfo()))    
+    #for key,value in dc.getInfo():
+    #    print str(key) + ":" + str(value)
+    
     #print(cli.version())
 
 
