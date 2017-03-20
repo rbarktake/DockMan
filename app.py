@@ -52,4 +52,4 @@ def _jinja2_filter_datetime(date, fmt=None):
 
 # start the server with the 'run()' method
 if __name__ == '__main__':
-    app.run(debug=True, port=8888)
+    app.run(host='0.0.0.0', debug=True, port=8888)
